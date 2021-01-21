@@ -14,7 +14,9 @@ dependencies {
     implementation "com.google.code.gson:gson:2.8.6"
 //    implementation 'com.github.dcendents:android-maven-gradle-plugin:2.1'
 }
-
+repositories {
+    mavenCentral()
+}
 //uploadArchives {
 //    repositories {
 //        mavenDeployer {
