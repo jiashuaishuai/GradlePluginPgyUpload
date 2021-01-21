@@ -1,0 +1,3 @@
+include ':pgyPlugin'
+//include ':app'
+rootProject.name = "GradlePlugindDemo"
