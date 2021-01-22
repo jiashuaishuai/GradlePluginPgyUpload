@@ -45,11 +45,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
-apply plugin: "com.jss.pgyupload"
-
-uploadBuild {
-    apiKey = "apikey"
-    userKey = "userkey"
-    params = ["params1": "1111111", "params2": "2222222"]
-    productFlavorNames = ["pri", "pub"]
-}
+//apply plugin: "com.jss.pgyupload"
+//
+//uploadBuild {
+//    apiKey = "apikey"
+//    userKey = "userkey"
+//    params = ["params1": "1111111", "params2": "2222222"]
+//    productFlavorNames = ["pri", "pub"]
+//}

@@ -96,7 +96,7 @@ class PgyPlugin implements Plugin<Project> {
         def json = response.body().string()
         response.close()
         def mpJson = new Gson().fromJson(json, Map.class)
-        if (mpJson.code.toString() == "0") {
+        if (mpJson.code == 0) {
             println "蒲公英安装地址: " + pgyExtension.pgyer + mpJson.data.buildShortcutUrl
         } else {
             println "蒲公英上传失败:" + json
