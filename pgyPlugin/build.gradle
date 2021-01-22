@@ -3,7 +3,7 @@ apply plugin: 'groovy'
 apply plugin: 'com.github.dcendents.android-maven' //发布到JitPack
 
 group("com.github.jiashuaishuai")
-version("1.0.1")
+version("1.0.3")
 
 
 
