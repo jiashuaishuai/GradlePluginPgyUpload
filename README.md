@@ -4,8 +4,8 @@
 
 ## 使用方法
 
-**1. 添加jitpack仓库**
-
+**1. 添加jitpack仓库,添加GradlePlugindPgyUpload插件**
+Plugind   打错懒得改了
 ```groovy
 allprojects {
     repositories {
@@ -13,6 +13,10 @@ allprojects {
         jcenter()
         maven { url 'https://jitpack.io' }
     }
+}
+
+dependencies{
+       classpath 'com.github.jiashuaishuai:GradlePlugindPgyUpload:1.0.3'
 }
 ```
 
