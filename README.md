@@ -22,7 +22,7 @@ allprojects {
 apply plugin: "com.jss.pgyupload"
 ```
 
-**3. 配置相关参数 **
+**3. 配置相关参数**
 
 ```groovy
 uploadBuild {
@@ -35,7 +35,7 @@ uploadBuild {
 
 如果项目有配置productFlavor务必配置**productFlavorNames** 
 
-**4. Android Studio 右侧打开gradle -> app -> tasks -> pgyplugin 下会生成 pgyUpload_\*\*\*     如：pgyUpload_debug或者pgyUpload_release 等 **
+**4. Android Studio 右侧打开gradle -> app -> tasks -> pgyplugin 下会生成 pgyUpload_\*\*\*     如：pgyUpload_debug或者pgyUpload_release 等**
 
 **5. 执行要上传的pgyUpload_\*\*\*    task**
 
