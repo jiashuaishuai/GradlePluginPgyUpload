@@ -5,7 +5,6 @@
 ## 使用方法
 
 **1. 添加jitpack仓库,添加GradlePlugindPgyUpload插件**
-Plugind   打错懒得改了
 ```groovy
 allprojects {
     repositories {
@@ -16,7 +15,7 @@ allprojects {
 }
 
 dependencies{
-       classpath 'com.github.jiashuaishuai:GradlePlugindPgyUpload:1.0.3'
+       classpath 'com.github.jiashuaishuai:GradlePluginPgyUpload:1.0.3'
 }
 ```
 
