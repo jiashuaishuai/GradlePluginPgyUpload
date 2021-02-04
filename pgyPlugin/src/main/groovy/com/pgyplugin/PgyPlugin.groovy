@@ -13,37 +13,32 @@ class PgyPlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
         pgyBuild = project.extensions.create("uploadBuild", PgyExtension)
-        def bts = project.android.buildTypes
-        for (int i = 0; i < bts.size(); i++) {
-            def mBuildTypeName = bts[i].name
-            project.tasks.whenTaskAdded { t ->//循环改project下所有tasks，包括动态生成的
-                //根据buildTypeName筛选符合条件的assemble任务
-                if (t.name.equalsIgnoreCase("assemble" + mBuildTypeName)) {
-                    println "assemble任务" + t.name
-                    //根据不同的mBuildTypeName创建蒲公英上传task，
-                    project.task("pgyUpload_" + mBuildTypeName, group: "pgyplugin", dependsOn: t) {
-                        println "新建任务名：" + "pgyUpload_" + mBuildTypeName
-                        doLast {
-                            project.android {
-                                applicationVariants.all { variant ->
-                                    def checkFlavorName = false
-                                    def productFlavorName = ""//获取构建变体名称
-                                    productFlavors.each { pf ->
-                                        productFlavorName = productFlavorName + pf.name
-                                    }
-                                    //如果变体名称都为空则默认为1个apk
-                                    if (productFlavorName == "" && pgyBuild.productFlavorNames.isEmpty()) {
-                                        checkFlavorName = true
-                                    } else if (!pgyBuild.productFlavorNames.isEmpty() && productFlavorName != "") {
-                                        checkFlavorName = pgyBuild.productFlavorNames.contains(productFlavorName)
-                                        println "变体名称：" + productFlavorName
-                                    }
-                                    //根据mBuildTypeName以及符合条件的productFlavorName上传apk
-                                    if (buildType.name.equalsIgnoreCase(mBuildTypeName) && checkFlavorName) {
-                                        variant.outputs.all {
-                                            println "apk路径：" + it.outputFile.getPath()
-                                            uploadFile(it.outputFile.getPath(), pgyBuild)
-                                        }
+        project.afterEvaluate {
+            def bts = project.android.buildTypes
+            for (int i = 0; i < bts.size(); i++) {
+                def mBuildTypeName = bts[i].name
+                mBuildTypeName = mBuildTypeName.substring(0, 1).toUpperCase() + mBuildTypeName.substring(1)
+                //根据不同的mBuildTypeName创建蒲公英上传task，
+                project.task("pgyUpload" + mBuildTypeName, group: "pgyplugin", dependsOn: "assemble" + mBuildTypeName) {
+                    doLast {
+                        project.android {
+                            applicationVariants.all { variant ->
+                                def checkFlavorName = false
+                                def productFlavorName = ""//获取构建变体名称
+                                productFlavors.each { pf ->
+                                    productFlavorName = productFlavorName + pf.name
+                                }
+                                //如果变体名称都为空则默认为1个apk
+                                if (productFlavorName == "" && pgyBuild.productFlavorNames.isEmpty()) {
+                                    checkFlavorName = true
+                                } else if (!pgyBuild.productFlavorNames.isEmpty() && productFlavorName != "") {
+                                    checkFlavorName = pgyBuild.productFlavorNames.contains(productFlavorName)
+                                }
+                                //根据mBuildTypeName以及符合条件的productFlavorName上传apk
+                                if (buildType.name.equalsIgnoreCase(mBuildTypeName) && checkFlavorName) {
+                                    variant.outputs.all {
+                                        println "apk路径：" + it.outputFile.getPath()
+                                        uploadFile(it.outputFile.getPath(), pgyBuild)
                                     }
                                 }
                             }
@@ -87,7 +82,7 @@ class PgyPlugin implements Plugin<Project> {
                 .url(pgyExtension.uploadUrl)
                 .post(bodyBuilder.build())
                 .build()
-        println "上传至蒲公英:" + pgyExtension.pgyer
+//        println "上传至蒲公英:" + pgyExtension.pgyer
         def response = client.newCall(request).execute()
         if (response == null || response.body() == null) {
             println "蒲公英上传结果失败"
