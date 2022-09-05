@@ -1,0 +1,9 @@
+[
+  {
+    "useModule": true,
+    "modelName": "pgyPlugin",
+    "moduleGroup": "com.github.jiashuaishuai:pgyPlugin:1.0.0",
+    "moduleDir": "./pgyPlugin"
+  },
+
+]

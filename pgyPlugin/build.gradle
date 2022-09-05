@@ -1,9 +1,5 @@
 apply plugin: 'groovy'
-//apply plugin: "maven"
-apply plugin: 'com.github.dcendents.android-maven' //发布到JitPack
 
-group("com.github.jiashuaishuai")
-version("1.0.4")
 
 
 
@@ -11,17 +7,12 @@ dependencies {
     implementation gradleApi()
     implementation localGroovy()
     implementation "com.squareup.okhttp3:okhttp:3.14.9"
-    implementation "com.google.code.gson:gson:2.8.6"
-//    implementation 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    implementation "com.google.code.gson:gson:2.8.9"
 }
 repositories {
     mavenCentral()
 }
-//uploadArchives {
-//    repositories {
-//        mavenDeployer {
-//            repository(url: uri('../repo'))
-//        }
-//    }
-//}
-
+//发布远程
+//apply from: '../mavenSeting.gradle'
+//ext.ARTIFACT_ID = "pgyPlugin"
+//ext.VERSION = "1.0.4"
