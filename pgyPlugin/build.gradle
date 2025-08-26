@@ -1,17 +1,31 @@
-apply plugin: 'groovy'
-
-
-
-
+plugins {
+    id 'groovy'
+    id 'maven-publish'
+}
 dependencies {
     implementation gradleApi()
     implementation localGroovy()
-    implementation "com.squareup.okhttp3:okhttp:3.14.9"
-    implementation "com.google.code.gson:gson:2.8.9"
+    implementation "com.squareup.okhttp3:okhttp:5.1.0"
 }
 repositories {
     mavenCentral()
 }
+//afterEvaluate {
+//    publishing {//发布到本地
+//        repositories {
+//            maven {
+//                url = uri("../repo")
+//            }
+//        }
+//        publications {
+//            mavenJava(MavenPublication) {
+//                groupId = "com.github.jiashuaishuai"
+//                version = '2.0.0'
+//                from components.java
+//            }
+//        }
+//    }
+//}
 //发布远程
 //apply from: '../mavenSeting.gradle'
 //ext.ARTIFACT_ID = "pgyPlugin"

@@ -1,21 +1,22 @@
-
-
 plugins {
     id 'com.android.application'
+
 }
+
 //apply plugin: "com.jss.pgyupload"
 android {
-    compileSdkVersion 30
-
+    compileSdkVersion 33
+    namespace "com.example.myapp"
     defaultConfig {
         applicationId "com.rayata.gradlepluginddemo"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 33
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -28,13 +29,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    flavorDimensions "mode"
+
+    flavorDimensions = [ "model"]// [ "model","env"]  组合模式
     productFlavors {
         pub {
+            dimension "model"
         }
         pri {
-
+            dimension "model"
         }
+//        prod { dimension "env" }//组合模式
     }
 }
 
@@ -50,8 +54,9 @@ dependencies {
 
 //
 //uploadBuild {
-//    apiKey = "apikey"
-//    userKey = "userkey"
-//    params = ["params1": "1111111", "params2": "2222222"]
-//    productFlavorNames = ["pri", "pub"]
+//    apiKey = "apiKey"
+//    params = ["buildUpdateDescription":"测试上传demo"]//非必传参数 ，查阅相关问答
+//    printAll = false//默认false 只打印基本信息；等于true 打印所有的返回信息
+//    productFlavorNames = ["pri"]// ["pri", "pub"]//配置FlavorNames ，支持flavors组合
+////    productFlavorNames = ["priProd", "pubProd"] //flavors组合，
 //}
