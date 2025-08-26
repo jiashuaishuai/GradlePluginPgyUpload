@@ -3,12 +3,14 @@
 ### 一键自动打包并上传至蒲公英Gradle插件
 
 ## 使用方法
-**支持配置FlavorNames ，支持flavors组合模式**
+**支持配置productFlavors ，支持flavors组合模式，如果没有配置flavors，则会根据执行的的buildTypesName上传(debug，release,...)**
 
 ## V2.0.1
 **更新内容：**
 更新V2.0快速上传api
+
 uploadBuild **删除userKey** 新增  **printAll = false**//默认false 只打印基本信息；等于true 打印所有的返回信息
+
 gradle 8.0更新
 
 **1. 添加jitpack仓库,添加GradlePlugindPgyUpload插件**
