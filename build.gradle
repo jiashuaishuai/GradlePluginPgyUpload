@@ -3,15 +3,17 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+//        maven { url 'https://jitpack.io' }
         //本地测试
 //        maven {
-//            url uri("/Users/jss/historyProject/GradlePluginPgyUpload/repo")
+//            url uri("./repo")
 //        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.2.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-//        classpath "com.github.jiashuaishuai:pgyPlugin:2.0.0"
+//        classpath "com.github.jiashuaishuai:pgyPlugin:1.0.4"//本地测试用的插件名
+//        classpath "com.github.jiashuaishuai:GradlePluginPgyUpload:1.0.4"//github发布的插件名
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
